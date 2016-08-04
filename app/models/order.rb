@@ -9,10 +9,8 @@ class Order < ActiveRecord::Base
 
     days_ago = time.days.ago
     next_day = (time-1).day.ago
-    self.where("checkout_date BETWEEN ? AND ?" , days_ago.to_date, next_day.to_date )
-    raise
 
-    #self.where("checkout_date IS NOT NULL AND ? = ?", checkout_date.to_date, time.days.ago.to_date).count
+    {"count" => self.where("checkout_date BETWEEN ? AND ?" , days_ago, next_day ).count} 
   end
   
 

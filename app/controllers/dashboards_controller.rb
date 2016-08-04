@@ -38,7 +38,14 @@ class DashboardsController < ApplicationController
                         "Average Order Value" => OrderContent.get_average_order,
                         "Largest Order Value" => OrderContent.get_largest_order}
 
-
+    @orders_day = { "Today" => Order.get_count_by_day(0),
+                        "Yesterday" =>  Order.get_count_by_day(1),
+                        2.days.ago.to_date => Order.get_count_by_day(2),
+                        3.days.ago.to_date => Order.get_count_by_day(3),
+                        4.days.ago.to_date => Order.get_count_by_day(4),
+                        5.days.ago.to_date => Order.get_count_by_day(5),
+                        6.days.ago.to_date => Order.get_count_by_day(6),
+                        7.days.ago.to_date => Order.get_count_by_day(7) }
   end
 
   def create_top_3_hash(method)
